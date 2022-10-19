@@ -1,4 +1,5 @@
-import { createRouter,createWebHistory } from "vue-router";
+import { createRouter,createWebHistory } from "vue-router"
+import store from './store'
 import home from './pages/home.vue'
 import login from './pages/login.vue'
 import register from './pages/register.vue'
@@ -43,10 +44,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to,form) =>{
-    if(to.meta.requiresAuth && !localStorage.getItem('token')){
+    if(to.meta.requiresAuth && store.getters.getToken == 0){
         return {name:'login'}
     }
-    if(to.meta.requiresAuth == false && localStorage.getItem('token') ){
+    if(to.meta.requiresAuth == false && store.getters.getToken != 0 ){
         return {name:'dashboard'}
     }
 })

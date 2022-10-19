@@ -11,13 +11,13 @@
                     <router-link class="nav-link active" aria-current="page" :to="{name:'home'}">Home</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link  class="nav-link" :to="{name:'login'}">Login</router-link>
+                    <router-link  class="nav-link" :to="{name:'login'}" v-if="$store.getters.getToken == 0">Login</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link  class="nav-link" :to="{name:'register'}">Register</router-link>
+                    <router-link  class="nav-link" :to="{name:'register'}" v-if="$store.getters.getToken == 0">Register</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link  class="nav-link" :to="{name:'dashboard'}">Dashboard</router-link>
+                    <router-link  class="nav-link" :to="{name:'dashboard'}" v-if="$store.getters.getToken != 0">Dashboard</router-link>
                 </li>
                 </ul>
             </div>
